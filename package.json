@@ -1,7 +1,8 @@
 {
-  "name": "player",
+  "name": "@altibox/demo-altibox-player",
   "version": "1.0.0",
   "main": "tools/server.js",
+
   "scripts": {
     "test": "test",
     "start": "npm run lint & npm run server",

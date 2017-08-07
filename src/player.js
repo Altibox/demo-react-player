@@ -2,28 +2,36 @@ import React from 'react';
 
 class Player extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      url: null,
-      playing: false
-    };
+  componentDidMount(){
+    console.log("Player did mount");
+    this.playerPropped(this.props);
   }
 
-  play(){
-   // "https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd";
+  componentWillReceiveProps(nextProps){
+    console.log("Player did recieve props");
+    this.playerPropped(nextProps);
+  }    
 
-    this.refs.video.play();
+  playerPropped(nextProps){
+    if(nextProps.playing && this.props.url){
+      console.log("Player is playing...");
+      this.refs.video.play();
+    }
+    else{
+      console.log("Player is pausing...");
+      this.refs.video.pause();
+    }
   }
-
-  pause(){
-    this.refs.video.pause();
-  }
-
+  
   render() {
+    console.log("Rendering player...");
+    
+    const style = {
+      backgroundColor: 'red'
+    };
+
     return (
-      <video src={this.state.url} ref="video" muted>
+      <video style={style} src={this.props.url} poster={this.props.posterUrl} ref="video" muted>
       </video>
     );
   }
