@@ -1,9 +1,11 @@
 {
   "name": "@altibox/demo-altibox-player",
-  "version": "1.0.0",
-  "main": "tools/server.js",
+  "version": "2.0.4",
+  "readme": "readme.md",
+  "main": "lib/index.js",
 
   "scripts": {
+    "build": "NODE_ENV=production babel src/ --out-dir lib",
     "test": "test",
     "start": "npm run lint & npm run server",
     "server": "./node_modules/.bin/babel-node tools/server.js",
